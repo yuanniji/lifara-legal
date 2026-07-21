@@ -1,6 +1,6 @@
-# Lifara 历界 · 法律文档（GitHub Pages）
+# 同领地 · 法律文档（GitHub Pages）
 
-静态页面，用于 App 内测 / 上架时填写隐私政策等 HTTPS 链接。
+静态页面，用于 App 内测 / 上架时填写隐私政策与支持网址等 HTTPS 链接。
 
 ## 一键部署（Windows PowerShell）
 
@@ -21,7 +21,10 @@ gh auth login
 ## 部署成功后的链接
 
 ```
-https://<你的GitHub用户名>.github.io/lifara-legal/privacy.html
+支持网址:   https://<你的GitHub用户名>.github.io/tonglingdi-legal/
+隐私政策:   https://<你的GitHub用户名>.github.io/tonglingdi-legal/privacy.html
 ```
 
-内测填表「隐私政策 URL」用上面这条。
+App Store Connect 填表：
+- **Support URL（支持网址）** → 首页链接
+- **Privacy Policy URL（隐私政策）** → privacy.html 链接

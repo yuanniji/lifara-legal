@@ -1,6 +1,6 @@
-# Lifara 历界 — 部署法律文档到 GitHub Pages
+# 同领地 — 部署法律文档到 GitHub Pages
 $ErrorActionPreference = "Stop"
-$RepoName = "lifara-legal"
+$RepoName = "tonglingdi-legal"
 
 $gh = Get-Command gh -ErrorAction SilentlyContinue
 if (-not $gh) {
@@ -20,14 +20,26 @@ Write-Host "GitHub 用户: $owner"
 if (-not (Test-Path ".git")) {
   git init -b main
   git add .
-  git commit -m "Add Lifara legal pages for GitHub Pages"
+  git commit -m "Add Tonglingdi legal pages for GitHub Pages"
 }
 
 $remoteUrl = "https://github.com/$owner/$RepoName.git"
 $hasRemote = git remote get-url origin 2>$null
 if (-not $hasRemote) {
-  gh repo create $RepoName --public --source=. --remote=origin --push --description "Lifara legal documents"
+  gh repo create $RepoName --public --source=. --remote=origin --push --description "同领地 legal documents"
 } else {
+  # 若旧仓库仍是 lifara-legal，改名为 tonglingdi-legal
+  $current = git remote get-url origin
+  if ($current -match "lifara-legal") {
+    Write-Host "正在将仓库重命名为 $RepoName ..."
+    gh repo rename $RepoName --yes
+    git remote set-url origin $remoteUrl
+  }
+  git add .
+  $pending = git status --porcelain
+  if ($pending) {
+    git commit -m "Update Tonglingdi legal pages branding"
+  }
   git push -u origin main
 }
 
@@ -40,8 +52,8 @@ if ($LASTEXITCODE -ne 0) {
 $base = "https://$owner.github.io/$RepoName"
 Write-Host ""
 Write-Host "完成！约 1–3 分钟后可访问："
-Write-Host "  首页:     $base/"
+Write-Host "  支持网址: $base/"
 Write-Host "  隐私政策: $base/privacy.html"
 Write-Host ""
-Write-Host "请把 lifara-v54/constants/legal-links.ts 里的 LEGAL_BASE_URL 改为："
+Write-Host "请确认 lifara-v54/constants/legal-links.ts 里的 LEGAL_BASE_URL 为："
 Write-Host "  $base"
