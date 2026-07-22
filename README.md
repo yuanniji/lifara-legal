@@ -21,10 +21,12 @@ gh auth login
 ## 部署成功后的链接
 
 ```
-支持网址:   https://<你的GitHub用户名>.github.io/tonglingdi-legal/
-隐私政策:   https://<你的GitHub用户名>.github.io/tonglingdi-legal/privacy.html
+支持网址:   https://tonglingdi.net/
+隐私政策:   https://tonglingdi.net/privacy.html
 ```
 
+（未绑域名时临时地址：`https://yuanniji.github.io/tonglingdi-legal/`）
+
 App Store Connect 填表：
-- **Support URL（支持网址）** → 首页链接
-- **Privacy Policy URL（隐私政策）** → privacy.html 链接
+- **Support URL（支持网址）** → `https://tonglingdi.net/`
+- **Privacy Policy URL（隐私政策）** → `https://tonglingdi.net/privacy.html`
